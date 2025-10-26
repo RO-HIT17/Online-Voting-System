@@ -1,33 +1,46 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{admin/base::layout(~{::section})}">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
+    <meta charset="UTF-8" />
+    <title>Admin Dashboard</title>
+    <!-- add a stylesheet specifically for the admin dashboard -->
+    <link rel="stylesheet" th:href="@{/css/admin-dashboard.css}" />
 </head>
 <body>
-	<section class = "center">
-	
+    <section class="center admin-dashboard" aria-labelledby="admin-dashboard-title">
 
-<h1>Admin Dashboard</h1>
-		<div th:if=${session.msg}>
-			<h3 th:text="${session.msg}" style="color:red"></h3>
-   					<h3 th:text="${session.msg}" style="color:red"></h3>
-   		
-   		</div>
-   		
-   		
-		<h3>Candidate 1 : Total Votes = <b style="color: limegreen"><span th:text="${c1}"></span></b></h3>
-		<h3>Candidate 2 : Total Votes = <b style="color: limegreen"><span th:text="${c2}"></span></b></h3>
-		<h3>Candidate 3 : Total Votes = <b style="color: limegreen"><span th:text="${c3}"></span></b></h3>
-		<h3>Candidate 4 : Total Votes = <b style="color: limegreen"><span th:text="${c4}"></span></b></h3>
-		
-		
-		
-	
-   		
-   		
+        <h1 id="admin-dashboard-title">Admin Dashboard</h1>
 
-	<br>	
-	</section>
+        <!-- session message alert -->
+        <div class="alert" th:if="${session.msg}" role="alert">
+            <h3 th:text="${session.msg}"></h3>
+        </div>
+
+        <!-- candidate results -->
+        <div class="results">
+            <h2>Candidate Results</h2>
+            <p class="muted">Here are the current vote counts for each candidate:</p>
+            <ul class="candidates">
+                <li class="candidate">
+                    <span class="label">Candidate 1:</span>
+                    <span class="value" title="Total votes for candidate 1"><b class="count" th:text="${c1}"></b> Votes</span>
+                </li>
+                <li class="candidate">
+                    <span class="label">Candidate 2:</span>
+                    <span class="value" title="Total votes for candidate 2"><b class="count" th:text="${c2}"></b> Votes</span>
+                </li>
+                <li class="candidate">
+                    <span class="label">Candidate 3:</span>
+                    <span class="value" title="Total votes for candidate 3"><b class="count" th:text="${c3}"></b> Votes</span>
+                </li>
+                <li class="candidate">
+                    <span class="label">Candidate 4:</span>
+                    <span class="value" title="Total votes for candidate 4"><b class="count" th:text="${c4}"></b> Votes</span>
+                </li>
+            </ul>
+        </div>
+
+        <br>
+    </section>
 </body>
 </html>

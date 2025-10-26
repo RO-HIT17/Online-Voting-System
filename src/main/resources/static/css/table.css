@@ -10,7 +10,7 @@ border: 1px solid black;
 
 
 th, td {
-border: 1px solid #ddd;
+border: 1px solid var(--glass-border);
   text-align: center;
   padding: 8px;
   white-space: nowrap;
@@ -19,8 +19,8 @@ border: 1px solid #ddd;
 }
 
 th {
-  background-color: #04AA6D;
-  color: white;
+  background-color: var(--accent-2);
+  color: var(--text);
 }
 
 .table-responsive {

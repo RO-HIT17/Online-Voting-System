@@ -9,35 +9,35 @@
 <title>Document</title>
 </head>
 <body>
-	<section class = "center">
-			
-   		
-<div class="container">
-  
-  <div class="center">
-  
-<!--  -->
-<div class="layout">
+	<section class = "center page">
+		<div class="page-card">
+	  		
+			<div class="container">
+	 
+				<div class="center">
+	  
+					<!--  -->
+					<div class="layout">
 
-		<div class = "col col-main">
+						<div class = "col col-main">
 	
-   		
-   		<!-- 1st Col Start -->
+	  		
+							<!-- 1st Col Start -->
 		
-		<table>
-						<h2>User Details:</h2>
-							<img th:src="@{/image/user.png}" height="125px" alt="User Icon">
+							<table class="user-details">
+								<h2>User Details:</h2>
+								<img th:src="@{/image/user.png}" class="user-icon" alt="User Icon">
 							
-					</table>
+							</table>
 						
-						<table border = '1' align='center'>
+							<table class="user-info">
 							
 							
 							
-							<tr>
-								<th>Name: </th>
-								<th> <h4 th:text="${user.name}"></h4></th>
-							</tr>
+								<tr>
+									<th>Name: </th>
+									<th> <h4 th:text="${user.name}"></h4></th>
+								</tr>
 							
 							
 						
@@ -56,73 +56,84 @@
 									<th>
 										
 										<div th:if=${user.status}>
-											 <h4 th:text="${user.status}"></h4> 
+											 <h4 th:text="${user.status}"></h4>
 								   		</div>
 								   		
-								   		<div th:unless=${user.status}>
-								   			 <h4>Not Voted</h4>
-								   		</div>
+										<div th:unless=${user.status}>
+											 <h4>Not Voted</h4>
+										</div>
 									
 									</th>
 								</tr>
 
 								
 				
-						</table>
+							</table>
 		
-		</div>
+						</div>
 		
-		<!-- 1st Col End  -->
+						<!-- 1st Col End  -->
 	
-		<div class = "col col-complementary">
+						<div class = "col col-complementary">
 
-<!-- 2nd Col start -->
+							<!-- 2nd Col start -->
 
-<form th:action = "@{/addcandidate}" method ="post">
+							<form th:action = "@{/addcandidate}" method ="post" class="vote-form">
 
 
 
-		<div th:if=${session.vmsg}>
-			 <h3 th:text="${session.vmsg}" style="color:green"></h3>
-   		</div>
-   		
-   		<div th:unless=${session.vmsg}>
-   			<div th:if=${user.status}>
-			 <h2 style="color:green"> You are already <span th:text="${user.status}">Title</span> </h2> 
-   			</div>
-   		</div>
-   		
-   		
-   		
-   		 
-		<div th:unless=${user.status}>
+								<div th:if=${session.vmsg}>
+									<h3 th:text="${session.vmsg}" class="success-message"></h3>
+	  								</div>
+	  		
+								<div th:unless=${session.vmsg}>
+									<div th:if=${user.status}>
+										<h2 class="voted-message"> You are already <span th:text="${user.status}">Title</span> </h2>
+	  								</div>
+	  							</div>
+	  		
+	  		
+	  		
+		 
+								<div th:unless=${user.status}>
 
-			<input th:value="${user.email}" name = "email" type="hidden" >
-		 	<br>
-		 	<input type="radio" name="candidate"  value ="candidate1" required>Candidate 1  <br><br>
-		  	<input type="radio" name="candidate"  value = "candidate2" required>Candidate 2 <br><br>
-		  	<input type="radio" name="candidate"  value = "candidate3" required>Candidate 3 <br><br>
-		  	<input type="radio" name="candidate"  value = "candidate4" required>Candidate 4 <br><br>
+									<input th:value="${user.email}" name = "email" type="hidden" >
+		 							<br>
+									<div class="candidate-options">
+										<label>
+											<input type="radio" name="candidate"  value ="candidate1" required>Candidate 1
+										</label>
+										<label>
+											<input type="radio" name="candidate"  value = "candidate2" required>Candidate 2
+										</label>
+										<label>
+											<input type="radio" name="candidate"  value = "candidate3" required>Candidate 3
+										</label>
+										<label>
+											<input type="radio" name="candidate"  value = "candidate4" required>Candidate 4
+										</label>
+									</div>
 		    	    
-		<input type = "submit" value="Vote">
-		    <br>
-   	   </div>
+									<input type = "submit" value="Vote" class="btn-primary">
+		    						<br>
+	  							</div>
 	
- 
+	
 
 
 
-</form>
+							</form>
 
-<!-- 2nd Col End -->
-</div>
+							<!-- 2nd Col End -->
+						</div>
 
-</div>
-<!--  -->
-</div>
-</div>
+					</div>
+					<!--  -->
+				</div>
+			</div>
 
-	<br>	
+			<br>
+		</div>
 	</section>
 </body>
 </html>

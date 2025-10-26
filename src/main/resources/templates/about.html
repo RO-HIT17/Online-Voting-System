@@ -1,23 +1,33 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
+    <meta charset="UTF-8" />
+    <title>About</title>
 </head>
 <body>
-	<section class = "center">
-	
+    <section class="center page" aria-labelledby="about-title">
 
-<h1>About</h1>
-		<div th:if=${session.msg}>
-			<h3 th:text="${session.msg}" style="color:red"></h3>
-   		
-   		<div th:text="${@sessionUtilityBean.removeVerificationMessageFromSession()}"></div>
-   		</div>
-   		
+        <link rel="stylesheet" th:href="@{/css/shared.css}" />
 
+        <div class="page-card">
+            <h1 id="about-title">About</h1>
 
-	<br>	
-	</section>
+            <div th:if="${session.msg}" class="alert info" role="status">
+                <h3 th:text="${session.msg}"></h3>
+                <div th:text="${@sessionUtilityBean.removeVerificationMessageFromSession()}"></div>
+            </div>
+
+            <p class="lead">This application is designed to facilitate a secure and efficient voting system. It ensures transparency and reliability in the voting process.</p>
+            
+            <h2>Key Features:</h2>
+            <ul>
+                <li>Secure Voting: Ensures that each vote is cast securely and cannot be tampered with.</li>
+                <li>Transparent Process: Provides a transparent voting process where results are verifiable.</li>
+                <li>Efficient System: Streamlines the voting process, making it quick and easy for voters.</li>
+                <li>User-Friendly Interface: Offers an intuitive and easy-to-use interface for all users.</li>
+            </ul>
+        </div>
+
+    </section>
 </body>
 </html>

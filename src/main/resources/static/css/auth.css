@@ -1,0 +1,78 @@
+/* auth.css - polished blue-purple theme with navbar overrides */
+:root{
+  --bg-1: #0b1226; /* deep navy */
+  --bg-2: #071534; /* deep indigo */
+  --accent-1: #6d28d9; /* purple */
+  --accent-2: #4f46e5; /* indigo */
+  --accent-3: #06b6d4; /* cyan */
+  --card-bg: rgba(255,255,255,0.03);
+  --muted: #9aa7bb;
+  --text: #e6eef8;
+  --glass-border: rgba(255,255,255,0.06);
+  --header-height: 64px; /* used to offset vertical centering under navbar */
+  --radius: 12px;
+}
+
+/* Base */
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,'Helvetica Neue',Arial;color:var(--text);background:linear-gradient(180deg,var(--bg-1),var(--bg-2));}
+
+/* Ensure page centers below the navbar (adjust header height if needed) */
+.center.auth-page{min-height:calc(100vh - var(--header-height));display:flex;align-items:center;justify-content:center;padding:1.25rem}
+
+/* Card */
+.auth-card{width:100%;max-width:480px;padding:1.6rem;border-radius:var(--radius);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid var(--glass-border);backdrop-filter:blur(6px);box-shadow:0 12px 40px rgba(2,6,23,0.6);margin:auto}
+.auth-card h1{margin:0 0 0.35rem;font-size:1.4rem;text-align:center;color:linear-gradient(90deg,var(--accent-1),var(--accent-2));letter-spacing:0.2px}
+.auth-card p.lead{margin:0 0 0.8rem;color:var(--muted);font-size:0.95rem;text-align:center}
+
+/* Adjusted form spacing and width */
+.auth-form{display:flex;flex-direction:column;gap:0.6rem;margin-top:0.5rem}
+.auth-form label{font-size:0.82rem;color:var(--muted);margin-bottom:0.15rem}
+.auth-form input{width:100%;padding:0.78rem 0.9rem;border-radius:10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);color:var(--text);font-size:0.98rem}
+.auth-form input::placeholder{color:rgba(230,238,248,0.42)}
+.auth-form input:focus{outline:none;border-color:rgba(109,40,217,0.9);box-shadow:0 8px 30px rgba(79,70,229,0.12);}
+
+/* Primary button with strong accent */
+.btn-primary{display:inline-flex;align-items:center;justify-content:center;padding:0.78rem;border-radius:10px;border:none;cursor:pointer;font-weight:700;color:white;background:linear-gradient(90deg,var(--accent-1),var(--accent-2));box-shadow:0 12px 30px rgba(79,70,229,0.18);transition:transform .14s ease,box-shadow .14s ease}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 42px rgba(79,70,229,0.22)}
+.btn-primary:active{transform:translateY(0)}
+.btn-primary:focus{outline:3px solid rgba(79,70,229,0.18);outline-offset:3px}
+
+/* Alerts */
+.alert{padding:0.6rem 0.85rem;border-radius:10px;margin-bottom:0.75rem;font-size:0.95rem;color:var(--text);border:1px solid transparent}
+.alert.info{background:linear-gradient(180deg, rgba(79,70,229,0.06), rgba(79,70,229,0.02));border-color:rgba(79,70,229,0.08)}
+.alert.error{background:linear-gradient(180deg, rgba(239,68,68,0.06), rgba(239,68,68,0.02));border-color:rgba(239,68,68,0.08);color:var(--text)}
+.alert.success{background:linear-gradient(180deg, rgba(16,185,129,0.06), rgba(16,185,129,0.02));border-color:rgba(16,185,129,0.08);color:var(--text)}
+
+/* Admin note */
+.admin-note{margin-top:0.6rem;padding:0.6rem;border-radius:8px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.007));border:1px solid rgba(255,255,255,0.02)}
+.admin-note h2{margin:0 0 0.25rem;font-size:1rem;color:var(--text);text-align:center}
+.admin-note .muted{margin:0 0 0.5rem;color:var(--muted);font-size:0.92rem;text-align:center}
+.admin-note ul{margin:0;padding-left:1rem;color:var(--muted);display:flex;gap:1rem;justify-content:center}
+.admin-note li{margin:0;background:rgba(255,255,255,0.02);padding:0.28rem 0.55rem;border-radius:6px}
+
+/* Navbar overrides - generic selectors to match common navbar structures in base layout */
+header, nav, .navbar, .topbar, .site-header{background:linear-gradient(90deg,var(--accent-2),var(--accent-1)) !important;border-bottom:1px solid rgba(255,255,255,0.06) !important}
+
+/* Nav links */
+header a, nav a, .navbar a, .nav-link{color:rgba(255,255,255,0.95) !important;text-decoration:none !important;padding:0.6rem 0.9rem;border-radius:6px;transition:background .12s ease,transform .08s ease}
+
+/* Active / hover states */
+header a:hover, nav a:hover, .navbar a:hover, .nav-link:hover{background:rgba(255,255,255,0.06) !important;transform:translateY(-1px)}
+
+/* Active link style: bright cyan accent */
+header a.active, nav a.active, .navbar a.active, .nav-link.active{background:linear-gradient(90deg,var(--accent-3),rgba(79,70,229,0.45)) !important;color:white !important;box-shadow:0 8px 24px rgba(6,182,212,0.12)}
+
+/* Navbar brand */
+.header-brand, .navbar-brand, .site-logo{color:white !important;font-weight:700}
+
+/* Ensure navbar elements stay readable on small screens */
+@media (max-width:780px){
+  header a, nav a, .navbar a{padding:0.5rem 0.6rem}
+  .admin-note ul{flex-direction:column;align-items:center}
+}
+
+/* Reduce motion preference */
+@media (prefers-reduced-motion:reduce){
+  .btn-primary, header a, nav a{transition:none}
+}

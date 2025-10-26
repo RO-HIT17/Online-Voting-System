@@ -1,47 +1,54 @@
 <!doctype html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" th:replace="~{base::layout(~{::section})}">
 <head>
-	<meta charset="UTF-8" />
-	<title>Document</title>
+    <meta charset="UTF-8" />
+    <title>Sign In</title>
+    <!-- stylesheet moved into the template section so it's loaded when base layout is applied -->
 </head>
 <body>
-	<section class = "center">
-	
-<form th:action = "@{/dologin}" method = "post">
-			 
-<h1>Login</h1>
+    <section class="center auth-page" aria-labelledby="signin-title">
 
-<div th:if=${session.vmsg}>
-			 <th:block th:text="${#session.removeAttribute('vmsg')}"></th:block>
-   		</div>
+        <link rel="stylesheet" th:href="@{/css/auth.css}" />
 
-<div th:if="${param.error}" style="color:red">
-          Invalid username and password <br><br>
+        <div class="auth-card">
+            <h1 id="signin-title">Login</h1>
+
+            <div th:if="${session.vmsg}" class="alert info" role="status">
+                <p th:text="${#session.removeAttribute('vmsg')}"></p>
+            </div>
+
+            <div th:if="${param.error}" class="alert error" role="alert">
+                <p>Invalid username and password</p>
+            </div>
+
+            <div th:if="${param.logout}" class="alert success" role="status">
+                <p>You have been successfully logged out.</p>
+            </div>
+
+            <form th:action="@{/dologin}" method="post" class="auth-form" autocomplete="on">
+
+                <label for="username">Email Id</label>
+                <input id="username" type="text" name="username" placeholder="Enter Your Email Id" required />
+
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password" placeholder="Enter Your Password" required />
+
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <hr />
+
+            <div class="admin-note" aria-hidden="false">
+                <h2>Admin Login</h2>
+                <p class="muted">Use the following credentials to sign in as an administrator:</p>
+                <ul>
+                    <li><strong>Email:</strong> admin</li>
+                    <li><strong>Password:</strong> admin</li>
+                </ul>
+                <p class="muted">This account has full access to manage the voting system.</p>
+            </div>
         </div>
-                            
-         <div th:if="${param.logout}" style="color:green">
-           You have been successfully logged out... <br><br>
-          </div>
-                       		
 
-Email Id: <input type = "text" name = "username" placeholder="Enter Your Email Id" required><br><br>
-
-Password: <input type = "password" name= "password" placeholder="Enter Your Password" required><br><br>
-
-<input type = "submit" value="Login">
-
-</form>
-	<br>	
-	
-<hr>
-<div style="color: firebrick">
-<h2>For Signing-in as a Admin </h2>
-<h3>Use</h3>
-<h3>Email Id: admin</h3>
-<h3>Password: admin</h3>
-</div>
-
-	<br>
-	</section>
+    </section>
 </body>
 </html>

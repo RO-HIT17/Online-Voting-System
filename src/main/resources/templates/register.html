@@ -5,41 +5,43 @@
 	<title>Document</title>
 </head>
 <body>
-	<section class="center">
-			
+	<section class="center page">
+		<div class="page-card">
 		<h1>Register</h1>
 		
 		<div th:if=${session.fail}>
-			<h3 th:text="${session.fail}" style="color:red"></h3>
+			<h3 th:text="${session.fail}" class="error-message"></h3>
 			<th:block th:text="${#session.removeAttribute('fail')}"></th:block>
-   		</div>
-   		
-   		<div th:if=${session.msg}>
-			<h3 th:text="${session.msg}" style="color:green"></h3>
-   		
-				<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
-	
-   		</div>
-   		
-   		
-    	
-		<form th:action="@{/createuser}" method="post">
-	
+		</div>
+	  		
+	  		
+	  		<div th:if=${session.msg}>
+	  			<h3 th:text="${session.msg}" class="success-message"></h3>
+	  		
+	  			<th:block th:text="${#session.removeAttribute('msg')}"></th:block>
+	  		</div>
+	  		
+	  		
+	   	
+		<form th:action="@{/createuser}" method="post" class="auth-form">
+			<label for="name">User Name:</label>
+			<input type="text" id="name" name="name" class="auth-input" placeholder="Enter Your User Name" required><br><br>
 			
-			User Name: <input type = "text" name = "name" placeholder="Enter Your User Name" required><br><br>
+			<label for="password">Password:</label>
+			<input type="password" id="password" name="password" class="auth-input" placeholder="Enter Your Password" required><br><br>
 			
-			Password: <input type = "password" name= "password" placeholder="Enter Your Password" required><br><br>
+			<label for="email">Email Id:</label>
+			<input type="text" id="email" name="email" class="auth-input" placeholder="Enter Your Email Id" required><br><br>
 			
-			Email Id: <input type = "text" name= "email" placeholder="Enter Your Email Id" required><br><br>
+			<label for="phone">Phone No:</label>
+			<input type="number" id="phone" name="phone" class="auth-input" placeholder="Enter Your Phone No" required><br><br>
 			
-			Phone No: <input type = "number" name= "phone" placeholder="Enter Your Phone No" required><br><br>
 			
-			
-			<input type = "submit" value="Register">
-			
+			<input type="submit" value="Register" class="btn-primary">
 		
 		</form>
 		<br>
+	</div>
 	
 	
 	</section>
